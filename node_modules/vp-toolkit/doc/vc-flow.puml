@@ -1,0 +1,32 @@
+@startuml
+title Exchanging Verifiable Credentials
+actor Issuer
+actor Holder
+actor Verifier
+boundary DataRegistry
+== Issuance ==
+Holder->Issuer: Using the browser, request an attestation for e.g. GivenName, FamilyName
+Issuer-[#blue]>Issuer: Generate a ChallengeRequest object for GivenName and FamilyName
+Issuer->Holder: Offer the ChallengeRequest in the form of a QR code
+Holder->Holder: Scan QR code with app
+Holder-[#green]>Holder: Generate two new DID's
+Holder-[#blue]>Holder: Generate two self-attested VerifiableCredential\nobjects, containing one DID each, to prove ownership
+Holder-[#blue]>Holder: Generate a VerifiablePresentation object,\nwhich holds the two VerifiableCredentials
+Holder->Issuer: App sends the VerifiablePresentation object
+Issuer-[#blue]>Issuer: Validate the VerifiablePresentation signature
+Issuer-[#blue]>Issuer: Generate two VerifiableCredential objects;\nOne for GivenName and one for FamilyName
+Issuer-[#blue]>Issuer: Generate a VerifiablePresentation object,\nwhich holds the two VerifiableCredentials
+Issuer->DataRegistry: Register the new DID's on the DataRegistry (a blockchain for instance)
+Issuer->Holder: Send the VerifiablePresentation
+Holder-[#blue]>Holder: Validate the VerifiablePresentation signature
+Holder-[#orange]>Holder: Store the VerifiableCredentials locally
+== Validation ==
+Verifier-[#blue]>Verifier: Generate a ChallengeRequest object\nfor GivenName and FamilyName
+Verifier->Holder: Offer the ChallengeRequest in the form of a QR code
+Holder-[#orange]>Holder: Retrieve locally stored VerifiableCredentials\nwhich match GivenName or FamilyName
+Holder-[#blue]>Holder: Generate a VerifiablePresentation\ncontaining these VerifiableCredentials
+Holder->Verifier: Send the VerifiablePresentation
+Verifier-[#blue]>Verifier: Validate the VerifiablePresentation signature
+Verifier->DataRegistry: Check the given DID's for revocations
+Verifier->Verifier: Accept and process the data
+@enduml

@@ -1,0 +1,15 @@
+{
+  "name": "proofofconcept",
+  "version": "1.0.0",
+  "description": "proof of concept for Master Thesis of Maria Sanz",
+  "main": "prueba.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node prueba.js"
+  },
+  "author": "Maria Sanz Sanchez",
+  "license": "ISC",
+  "dependencies": {
+    "vp-toolkit": "^0.2.3"
+  }
+}
