@@ -1,4 +1,5 @@
 # Zero-trust architecture for e-therapy based on self-sovereign identity
+## Proof of Concept
 Master Universitario en Internet of Things
 Universidad Politécnica de Madrid
 
