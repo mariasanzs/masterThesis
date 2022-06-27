@@ -1,14 +1,22 @@
 {
   "name": "proofofconcept",
   "version": "1.0.0",
-  "description": "proof of concept for Master Thesis of Maria Sanz",
+  "description": "Proof of Concept of Master's Thesis of Maria Sanz",
   "main": "prueba.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node prueba.js"
+    "start": "npx ts-node prueba.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariasanzs/masterThesis.git"
   },
   "author": "Maria Sanz Sanchez",
   "license": "ISC",
+  "bugs":{
+    "url": "https://github.com/mariasanzs/masterThesis/issues"
+  },
+  "homepage": "https://github.com/mariasanzs/masterThesis#readme",
   "dependencies": {
     "vp-toolkit": "^0.2.3"
   }

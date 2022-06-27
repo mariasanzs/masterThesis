@@ -42,7 +42,7 @@ console.log(JSON.stringify(verifiableCredential, null, 2))
 const fs = require('fs');
 const path = require('path');
 
-fs.writeFileSync(path.resolve(__dirname, "patientVC.json"), JSON.stringify(verifiableCredential, null, 2))
+fs.writeFileSync(path.resolve(__dirname, "../credentials/patientVC.json"), JSON.stringify(verifiableCredential, null, 2))
 
 // Validating a VerifiableCredential object:
 console.log(signer.verifyVerifiableCredential(verifiableCredential)) // true or false
