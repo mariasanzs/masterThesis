@@ -4,14 +4,14 @@ import { CredentialStatus } from 'vp-toolkit-models'
 
 const yourPrivateKey = 'xprv9s21ZrQH143K2LGT5KeWPddxBVLs42oAr6QZwGUoL7Xe5BiLyKG1B8QyyCByHH5DM96GuJpHHB4pZYLXbpMeE17Di4F37v8LspL3JnHB8LC'
 const cryptAlgorithm = new LocalCryptUtils() // secp256k1 algorithm
-const signer = new VerifiableCredentialSigner(cryptAlgorithm)
+export const signer = new VerifiableCredentialSigner(cryptAlgorithm)
 const generator = new VerifiableCredentialGenerator(signer)
 
 // Creating a VerifiableCredential object:
 cryptAlgorithm.importMasterPrivateKey(yourPrivateKey)
-const verifiableCredential = generator.generateVerifiableCredential({
+export const patientVC = generator.generateVerifiableCredential({
   '@context': ["https://www.w3.org/2018/credentials/v1",
-  "http://schema.org"],
+  "http://schema.org", "http://schema2.org"],
   id: 'https://www.dnielectronico.es/credentials/99999999',
   type: ['VerifiableCredential', 'IDCertificate'],
   issuer: 'did:protocol:0x9c6a28B1a933acF8683574655fAfF1Ce09D11B4c',
@@ -33,12 +33,19 @@ const verifiableCredential = generator.generateVerifiableCredential({
 }, 0, 0)
 
 // The generator attaches a proof object to the verifiableCredential so it becomes cryptographically verifiable.
-
-console.log(JSON.stringify(verifiableCredential, null, 2))
+console.log('\x1b[36m%s\x1b[0m','--------------- Generating VC for patient ID---------------');
+console.log(JSON.stringify(patientVC, null, 2))
 const fs = require('fs');
 const path = require('path');
 
-fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientVC.json"), JSON.stringify(verifiableCredential, null, 2))
-
 // Validating a VerifiableCredential object:
-console.log(signer.verifyVerifiableCredential(verifiableCredential)) // true or false
+console.log('\x1b[36m%s\x1b[0m','--------------- Validating VC for patient Credential---------------');
+if(signer.verifyVerifiableCredential(patientVC)){
+  console.log("✅ VC's integrity is correct and Issuer's signing is correct")
+  fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientVC.json"), JSON.stringify(patientVC, null, 2))
+  fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/VCsigner.json"), JSON.stringify(signer))
+  console.log('\x1b[35m%s\x1b[0m','SAVED IN WALLET!');
+}else{
+  console.log("❌ There is a problem with VC's integrity and/or Issuer's signing")
+}
+

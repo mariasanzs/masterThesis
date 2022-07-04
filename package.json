@@ -13,11 +13,12 @@
   },
   "author": "Maria Sanz Sanchez",
   "license": "ISC",
-  "bugs":{
+  "bugs": {
     "url": "https://github.com/mariasanzs/masterThesis/issues"
   },
   "homepage": "https://github.com/mariasanzs/masterThesis#readme",
   "dependencies": {
+    "node-localstorage": "^2.2.1",
     "vp-toolkit": "^0.2.3"
   }
 }

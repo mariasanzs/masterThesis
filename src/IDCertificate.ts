@@ -9,7 +9,7 @@ const generator = new VerifiableCredentialGenerator(signer)
 
 // Creating a VerifiableCredential object:
 cryptAlgorithm.importMasterPrivateKey(yourPrivateKey)
-const verifiableCredential = generator.generateVerifiableCredential({
+export const IDpatientVC = generator.generateVerifiableCredential({
   '@context': ["https://www.w3.org/2018/credentials/v1",
   "http://schema.org"],
   id: 'https://www.dnielectronico.es/credentials/99999999',
@@ -37,12 +37,17 @@ const verifiableCredential = generator.generateVerifiableCredential({
 }, 0, 0)
 
 // The generator attaches a proof object to the verifiableCredential so it becomes cryptographically verifiable.
-
-console.log(JSON.stringify(verifiableCredential, null, 2))
+console.log('\x1b[36m%s\x1b[0m','--------------- Generating VC for patient ID---------------');
+console.log(JSON.stringify(IDpatientVC, null, 2))
 const fs = require('fs');
 const path = require('path');
 
-fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientIDVC.json"), JSON.stringify(verifiableCredential, null, 2))
-
 // Validating a VerifiableCredential object:
-console.log(signer.verifyVerifiableCredential(verifiableCredential)) // true or false
+console.log('\x1b[36m%s\x1b[0m','--------------- Validating VC for patient ID---------------');
+if(signer.verifyVerifiableCredential(IDpatientVC)){
+  console.log("✅ VC's integrity is correct and Issuer's signing is correct")
+  fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientIDVC.json"), JSON.stringify(IDpatientVC, null, 2))
+  console.log('\x1b[35m%s\x1b[0m','SAVED IN WALLET!');
+}else{
+  console.log("❌ There is a problem with VC's integrity and/or Issuer's signing")
+}
