@@ -6,6 +6,8 @@ const yourPrivateKey = 'xprv9s21ZrQH143K2LGT5KeWPddxBVLs42oAr6QZwGUoL7Xe5BiLyKG1
 const cryptAlgorithm = new LocalCryptUtils() // secp256k1 algorithm
 export const signer = new VerifiableCredentialSigner(cryptAlgorithm)
 const generator = new VerifiableCredentialGenerator(signer)
+const fs = require('fs');
+const path = require('path');
 
 // Creating a VerifiableCredential object:
 cryptAlgorithm.importMasterPrivateKey(yourPrivateKey)
@@ -17,7 +19,7 @@ export const patientVC = generator.generateVerifiableCredential({
   issuer: 'did:protocol:0x9c6a28B1a933acF8683574655fAfF1Ce09D11B4c',
   issuanceDate: new Date(Date.UTC(2019, 0, 1, 23, 34, 56)),
   credentialSubject: {
-    id: 'did:atent@:0030',
+    id: 'did:atent@:0xfE69E4457295b5554402e62A7D98b5efB8380174',
     givenName:'Patricia Perez Perez',
     gender: 'F',
     department:'ADHD',
@@ -35,17 +37,15 @@ export const patientVC = generator.generateVerifiableCredential({
 // The generator attaches a proof object to the verifiableCredential so it becomes cryptographically verifiable.
 console.log('\x1b[36m%s\x1b[0m','--------------- Generating VC for patient ID---------------');
 console.log(JSON.stringify(patientVC, null, 2))
-const fs = require('fs');
-const path = require('path');
 
 // Validating a VerifiableCredential object:
 console.log('\x1b[36m%s\x1b[0m','--------------- Validating VC for patient Credential---------------');
 if(signer.verifyVerifiableCredential(patientVC)){
-  console.log("✅ VC's integrity is correct and Issuer's signing is correct")
+  console.log("✅ VC's ownership is correct")
   fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientVC.json"), JSON.stringify(patientVC, null, 2))
   fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/VCsigner.json"), JSON.stringify(signer))
   console.log('\x1b[35m%s\x1b[0m','SAVED IN WALLET!');
 }else{
-  console.log("❌ There is a problem with VC's integrity and/or Issuer's signing")
+  console.log("❌ There is a problem with VC's ownership")
 }
 
