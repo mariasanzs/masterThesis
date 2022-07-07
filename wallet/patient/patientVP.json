@@ -5,7 +5,8 @@
   ],
   "id": "urn:uuid:0xE1f6a9A0F05373EC4Ca76FD5F6dd8D0308Ba9de4",
   "type": [
-    "VerifiablePresentation"
+    "VerifiablePresentation",
+    "PatientPresentation"
   ],
   "verifiableCredential": [
     {
@@ -17,7 +18,7 @@
       "id": "https://www.dnielectronico.es/credentials/99999999",
       "type": [
         "VerifiableCredential",
-        "IDCertificate"
+        "PatientCredential"
       ],
       "issuer": "did:protocol:0x9c6a28B1a933acF8683574655fAfF1Ce09D11B4c",
       "issuanceDate": "2019-01-01T23:34:56.000Z",
@@ -37,21 +38,20 @@
       },
       "proof": {
         "type": "secp256k1Signature2019",
-        "created": "2022-07-05T17:11:18.734Z",
+        "created": "2022-07-07T09:33:38.264Z",
         "verificationMethod": "640646fe0502b3a4191d7431da781a2c1da4dea2af9f650c88792e39943944909fd915209836b3c7d83223f8d68077c8e5bbda5d5546f484b166a3248add9489",
-        "nonce": "4730d8da-f636-4a9c-96e7-e6935779dc51",
-        "signatureValue": "0d337464b88faa1d26b7478c63e4c7113d263d89f958ed7e5f8f26b1897862622adcdc593489047224b7508672819d8aa80978ee018f6760db02d90ef3a90e44"
+        "nonce": "16f43010-8575-4689-970f-160f234f5eec",
+        "signatureValue": "91598e0ca1825e4d6bedb2a00ea133fc7fccfb7b80fd15a1e0818f166236f2816da07ac5852e10872b3ddeed0d68bb815223521e2b0616862e868296ff0f956d"
       }
     },
     {
       "@context": [
-        "https://www.w3.org/2018/credentials/v1",
         "http://schema.org"
       ],
       "id": "https://www.dnielectronico.es/credentials/99999999",
       "type": [
         "VerifiableCredential",
-        "IDCertificate"
+        "IDCredential"
       ],
       "issuer": "did:protocol:0x9c6a28B1a933acF8683574655fAfF1Ce09D11B4c",
       "issuanceDate": "2019-01-01T23:34:56.000Z",
@@ -75,27 +75,27 @@
       },
       "proof": {
         "type": "secp256k1Signature2019",
-        "created": "2022-07-05T17:11:19.263Z",
+        "created": "2022-07-07T09:33:38.393Z",
         "verificationMethod": "640646fe0502b3a4191d7431da781a2c1da4dea2af9f650c88792e39943944909fd915209836b3c7d83223f8d68077c8e5bbda5d5546f484b166a3248add9489",
-        "nonce": "b600a38e-1a54-4366-b1bf-64cbce194a16",
-        "signatureValue": "23a9eacc760d8f2e25f73ad6e2c86758f715ec2051147ad74a867a9cb64a099948f6e24f55eb537a2385c63364e1713ef70231f189dca75bb10dd717736fdd08"
+        "nonce": "e0612ea1-f214-4f07-a10a-62fa07f2749a",
+        "signatureValue": "79cf8795f9688a13173e50d15cdba778a5a0e56edd59870e4d8c560abe79a10c4b95bc70489ad4b6aa42e43e8bb65d094b211e195483049232fa0ba7ff10f807"
       }
     }
   ],
   "proof": [
     {
       "type": "secp256k1Signature2019",
-      "created": "2022-07-05T17:11:19.415Z",
+      "created": "2022-07-07T09:33:38.469Z",
       "verificationMethod": "2d5d2404c409c9f1ecbc8200c0dbc0ea588778f17bacabb86e80bd315bb692839e3b05a9ae4383bb554609068355c223312cd92b7fbc1a4f9c37edbd5c40225a",
-      "nonce": "16a187b2-d54c-4aba-be62-6d91a3c1e060",
-      "signatureValue": "9d24d34828842d6a7b4ed25be96bc2d510b3c6203081264974178a3812bd2943673ce6ab225c378f2d8e07180a70d7332ba88ff82e7f0db8a62268d30fe36bf5"
+      "nonce": "f8b4483d-4cbd-4fb3-a27b-5561c493ba34",
+      "signatureValue": "cc68d02ed1104dcc895b35067068b0d45f050e524684b8a4eace5ca73cffef73359c20abb7d3f1cefbf822715e7bc6e0b91373da50acec85437d5eaac369bf20"
     },
     {
       "type": "secp256k1Signature2019",
-      "created": "2022-07-05T17:11:19.521Z",
+      "created": "2022-07-07T09:33:38.501Z",
       "verificationMethod": "2d5d2404c409c9f1ecbc8200c0dbc0ea588778f17bacabb86e80bd315bb692839e3b05a9ae4383bb554609068355c223312cd92b7fbc1a4f9c37edbd5c40225a",
-      "nonce": "d208bfe1-c7bb-48f2-ad8e-cd850a4b4389",
-      "signatureValue": "de4a6481a1a5029331441bb7be56fa411da8986b19d35f77764cbdfe7bd565d65e1f70e9f776ff4268fc2b55c85d4bfe9783265e382df3df135f8a35291d519a"
+      "nonce": "3068c461-400c-4cbf-ace6-28c5d1835710",
+      "signatureValue": "9a4c1012029ae372568935a8dc3672c2a2425bdb58a7cc1069727e54c9453f996f35d488fa7529bee8c2c1218bc03597c9007fdaf7dbaf36f0d8eed4d847859a"
     }
   ]
 }

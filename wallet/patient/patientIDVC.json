@@ -1,13 +1,11 @@
 {
   "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "http://schema.org",
-    "http://schema2.org"
+    "http://schema.org"
   ],
   "id": "https://www.dnielectronico.es/credentials/99999999",
   "type": [
     "VerifiableCredential",
-    "IDCertificate"
+    "IDCredential"
   ],
   "issuer": "did:protocol:0x9c6a28B1a933acF8683574655fAfF1Ce09D11B4c",
   "issuanceDate": "2019-01-01T23:34:56.000Z",
@@ -15,11 +13,15 @@
     "id": "did:atent@:0xfE69E4457295b5554402e62A7D98b5efB8380174",
     "givenName": "Patricia Perez Perez",
     "gender": "F",
-    "department": "ADHD",
-    "MeetingRoom": "306",
-    "endDate": "17-10-2022",
-    "LoanorCredit": "IoTDevice",
-    "serialNumber": "11KLI"
+    "nationality": "Spain",
+    "birthDate": "15-02-2006",
+    "identifier": "99999999R",
+    "expires": "27-03-2023",
+    "address": {
+      "streetAddress": "Calle Preciados 12",
+      "addressLocality": "Madrid",
+      "addressRegion": "Madrid"
+    }
   },
   "credentialStatus": {
     "type": "vcStatusRegistry2019",
@@ -27,9 +29,9 @@
   },
   "proof": {
     "type": "secp256k1Signature2019",
-    "created": "2022-07-05T17:11:18.734Z",
+    "created": "2022-07-07T09:33:38.393Z",
     "verificationMethod": "640646fe0502b3a4191d7431da781a2c1da4dea2af9f650c88792e39943944909fd915209836b3c7d83223f8d68077c8e5bbda5d5546f484b166a3248add9489",
-    "nonce": "4730d8da-f636-4a9c-96e7-e6935779dc51",
-    "signatureValue": "0d337464b88faa1d26b7478c63e4c7113d263d89f958ed7e5f8f26b1897862622adcdc593489047224b7508672819d8aa80978ee018f6760db02d90ef3a90e44"
+    "nonce": "e0612ea1-f214-4f07-a10a-62fa07f2749a",
+    "signatureValue": "79cf8795f9688a13173e50d15cdba778a5a0e56edd59870e4d8c560abe79a10c4b95bc70489ad4b6aa42e43e8bb65d094b211e195483049232fa0ba7ff10f807"
   }
 }

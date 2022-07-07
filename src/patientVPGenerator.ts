@@ -21,22 +21,21 @@ const IDpatientVP = generator.generateVerifiablePresentation({
   '@context': ["https://www.w3.org/2018/credentials/v1",
   "http://schema.org"],
   id: 'urn:uuid:0xE1f6a9A0F05373EC4Ca76FD5F6dd8D0308Ba9de4',
-  type: ['VerifiablePresentation'],
+  type: ['VerifiablePresentation','PatientPresentation'],
   verifiableCredential: existingVerifiableCredentials
 }, keys)
 
 // The generator attaches one proof object for each verifiableCredential, so the credential ownership becomes cryptographically verifiable.
-console.log(JSON.stringify(IDpatientVP, null, 2))
+//console.log(JSON.stringify(IDpatientVP, null, 2))
 
-console.log(vpsigner.verifyVerifiablePresentation(IDpatientVP)) // true or false
-fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/VP.json"), JSON.stringify(IDpatientVP, null, 2))
+//console.log(vpsigner.verifyVerifiablePresentation(IDpatientVP)) // true or false
 
 // Validating a VerifiablePresentation  object:
 console.log('\x1b[36m%s\x1b[0m','Validating Verifiable Presentation for patient ...');
 if(vpsigner.verifyVerifiablePresentation(IDpatientVP)){
-  console.log("✅ VC's integrity is correct and Issuer's signing is correct")
-  fs.writeFileSync(path.resolve(__dirname, "../credentials/patient/patientVP.json"), JSON.stringify(IDpatientVP, null, 2))
+  console.log("✅ VC's ownership is correct")
+  fs.writeFileSync(path.resolve(__dirname, "../wallet/patient/patientVP.json"), JSON.stringify(IDpatientVP, null, 2))
   console.log('\x1b[35m%s\x1b[0m','VP SAVED!');
 }else{
-  console.log("❌ There is a problem with VC's integrity and/or Issuer's signing")
+  console.log("❌ There is a problem with VC's ownership")
 }
